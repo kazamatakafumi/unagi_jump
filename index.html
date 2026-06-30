@@ -2687,6 +2687,7 @@ const SFX_KEIKO_SRC = "data:audio/mpeg;base64,SUQzAgAAAAAfdlRTUwAADwBMb2dpYyBQcm
     playDieSfx();
     stopBgm();
     state = 'dead';
+    onPlayerDeath();
     if (score > best){
       best = score;
       localStorage.setItem('jd_best2', String(best));
@@ -3082,6 +3083,53 @@ const SFX_KEIKO_SRC = "data:audio/mpeg;base64,SUQzAgAAAAAfdlRTUwAADwBMb2dpYyBQcm
   reset();
   requestAnimationFrame(loop);
 })();
+</script>
+<!-- ゲーム下部の固定バナー広告 -->
+<div id="bottomBanner" style="position:fixed; bottom:0; left:0; width:100%; text-align:center; background:#000; z-index:999;">
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-9071840784059256"
+       data-ad-slot="5499038560"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<!-- 5回死亡で出す広告オーバーレイ(普段は非表示) -->
+<div id="deathAdOverlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); z-index:1000; text-align:center;">
+  <div style="margin-top:20%;">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-9071840784059256"
+         data-ad-slot="5941891695"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <button id="closeDeathAd" style="margin-top:20px; padding:10px 30px; font-size:16px;">閉じる</button>
+  </div>
+</div>
+
+<script>
+  let deathCount = 0;
+
+  function showDeathAd() {
+    const overlay = document.getElementById('deathAdOverlay');
+    overlay.style.display = 'block';
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  }
+
+  document.getElementById('closeDeathAd').addEventListener('click', function() {
+    document.getElementById('deathAdOverlay').style.display = 'none';
+  });
+
+  // die()関数の中から、この関数が呼び出されます
+  function onPlayerDeath() {
+    deathCount++;
+    if (deathCount % 5 === 0) {
+      showDeathAd();
+    }
+  }
 </script>
 </body>
 </html>

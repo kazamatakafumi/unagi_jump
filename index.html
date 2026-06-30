@@ -13,6 +13,7 @@
     background: #1b1530;
     font-family: -apple-system, "Hiragino Sans", "Noto Sans JP", sans-serif;
     touch-action: manipulation;
+    padding-bottom: 50px;
   }
   #game {
     position:relative;
@@ -3085,13 +3086,11 @@ const SFX_KEIKO_SRC = "data:audio/mpeg;base64,SUQzAgAAAAAfdlRTUwAADwBMb2dpYyBQcm
 })();
 </script>
 <!-- ゲーム下部の固定バナー広告 -->
-<div id="bottomBanner" style="position:fixed; bottom:0; left:0; width:100%; text-align:center; background:#000; z-index:999;">
+<div id="bottomBanner" style="position:fixed; bottom:0; left:0; width:100%; height:50px; text-align:center; background:#000; z-index:999; overflow:hidden;">
   <ins class="adsbygoogle"
-       style="display:block"
+       style="display:inline-block; width:320px; height:50px;"
        data-ad-client="ca-pub-9071840784059256"
-       data-ad-slot="5499038560"
-       data-ad-format="auto"
-       data-full-width-responsive="true"></ins>
+       data-ad-slot="5499038560"></ins>
 </div>
 <script>
   (adsbygoogle = window.adsbygoogle || []).push({});
